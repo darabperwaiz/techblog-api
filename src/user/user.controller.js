@@ -2,9 +2,9 @@ import { userCreate, login } from "./user.repository.js";
 import bcrypt from 'bcrypt'
 
 export const signUp = async (req, res) => {
-    const {email, password} = req.body
+    const {firstname, lastname, email, password} = req.body
    const hashedPassword = await bcrypt.hash(password, 10)
-    const user = await userCreate(email, hashedPassword)
+    const user = await userCreate(firstname, lastname, email, hashedPassword)
     return res.status(201).send({success: true, message: "User Created Successfully!", user: user})
 }
 

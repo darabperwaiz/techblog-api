@@ -9,8 +9,8 @@ export const getUser = async () => {
     return users
 }
 
-export const userCreate = async (email, password) => {
-    const user = new User({email, password});
+export const userCreate = async (firstname, lastname, email, password) => {
+    const user = new User({firstname, lastname, email, password});
     const savedUser = await user.save()
     return savedUser
 }
@@ -31,7 +31,8 @@ export const login = async (email, password) => {
 
     const payload = {
         userId: user._id,
-        userEmail: user.email
+        userEmail: user.email,
+        firstName: user.firstname
     }
 
     const token = jwt.sign(payload, secret, {expiresIn: '1h'})
