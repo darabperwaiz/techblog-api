@@ -16,6 +16,10 @@ app.use(cors())
 app.use('/api/v1/', postRouter)
 app.use('/api/v1/user/', userRouter)
 
+app.get('/', (req, res)=> {
+    res.end("Welcome To Blog Api")
+})
+
 app.listen(PORT, ()=> {
     console.log("Server is Running on PORT", PORT)
     db()
